@@ -375,7 +375,7 @@ class TestConsoleRenderer:
             monkeypatch.setattr(
                 cr,
                 "_exception_formatter",
-                lambda s, ei: dev.plain_traceback(s, ei),
+                lambda s, ei: dev.plain_traceback(s, ei),  # noqa: PLW0108
             )
 
         rv = cr(None, None, {"event": "test", "exception": exc})

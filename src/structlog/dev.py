@@ -356,7 +356,7 @@ class LogLevelColumnFormatter:
             self.width = (
                 0
                 if width == 0
-                else len(max(self.level_styles.keys(), key=lambda e: len(e)))
+                else len(max(self.level_styles.keys(), key=len))
             )
             self.reset_style = reset_style
         else:
@@ -819,9 +819,7 @@ class ConsoleRenderer:
 
         for key in level_to_color:
             level_to_color[key] += self._styles.bright
-        self._longest_level = len(
-            max(level_to_color.keys(), key=lambda e: len(e))
-        )
+        self._longest_level = len(max(level_to_color.keys(), key=len))
 
         self._default_column_formatter = KeyValueColumnFormatter(
             self._styles.kv_key,
